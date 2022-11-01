@@ -241,6 +241,7 @@ const SpecificationForm: FC<{ activeSpecificationId: string }> = ({ activeSpecif
                                         control={control}
                                         render={({ field: { onChange, value } }) => (
                                             <FormControlLabel
+                                                sx={{ marginBottom: '20px' }}
                                                 key={index + item.name}
                                                 {...register(item.name)}
                                                 onChange={onChange} checked={!!value}
