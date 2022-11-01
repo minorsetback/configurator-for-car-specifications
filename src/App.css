@@ -1,4 +1,3 @@
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -8,6 +7,11 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+#panel1a-header > div {
+  justify-content: space-between;
+  align-items: center;
 }
 
 .App-header {

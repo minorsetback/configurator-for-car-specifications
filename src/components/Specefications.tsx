@@ -123,14 +123,14 @@ const Specefications = () => {
                                             expandIcon={<ExpandMoreIcon />}
                                             aria-controls="panel1a-content"
                                             id="panel1a-header"
+                                            sx={{ justifyContent: 'space-between' }}
                                         >
-
                                             <Typography>
                                                 {item?.name}
-                                                <IconButton onClick={() => { selectSpecification(item); setActiveSpecificationId(item.id) }}>
-                                                    <EditIcon />
-                                                </IconButton>
                                             </Typography>
+                                            <IconButton onClick={() => { selectSpecification(item); setActiveSpecificationId(item.id) }}>
+                                                <EditIcon />
+                                            </IconButton>
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             {Object.keys(item).map((key) => {
@@ -165,7 +165,7 @@ const Specefications = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <FormGroup>
                             <TextField
-                                {...register("name")}
+                                {...register("name", { required: true })}
                                 id="outlined-basic"
                                 value={message}
                                 onChange={(event) => { setMessage(event.target.value) }}
