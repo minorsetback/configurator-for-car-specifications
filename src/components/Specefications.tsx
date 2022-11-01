@@ -17,6 +17,8 @@ import Modal from '@mui/material/Modal';
 import { useSpecefication } from '../hooks/useSpecefication';
 import { engine, material, wheel, wheelMaterial, typeOptions } from "../utility/options"
 import { Config } from '../utility/types';
+import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -90,7 +92,7 @@ const Specefications = () => {
                 sx={{
                     display: 'flex',
                     m: 1,
-                    p: 1,
+                    p: 10,
                     border: '1px solid',
                     borderRadius: 2,
                     fontSize: '0.875rem',
@@ -104,11 +106,10 @@ const Specefications = () => {
                         display: 'block',
                         m: 1,
                         p: 1,
-                        border: '1px solid',
-                        borderRadius: 2,
                         fontSize: '0.875rem',
                         fontWeight: '700',
-                        width: "100%",
+                        width: "700px",
+                        margin: '0 auto',
                         overflowY: "auto"
                     }}
                 >
@@ -116,13 +117,20 @@ const Specefications = () => {
                         {specification &&
                             specification?.map((item: any) => {
                                 return (
-                                    <Accordion key={item.id + item?.name} sx={{ marginBottom: '20px' }} onClick={() => { selectSpecification(item); setActiveSpecificationId(item.id) }} expanded={expanded === item.id} onChange={handleChange(item.id)}>
+                                    <Accordion key={item.id + item?.name} sx={{ marginBottom: '20px' }} expanded={expanded === item.id} onChange={handleChange(item.id)}>
+
                                         <AccordionSummary
                                             expandIcon={<ExpandMoreIcon />}
                                             aria-controls="panel1a-content"
                                             id="panel1a-header"
                                         >
-                                            <Typography>{item?.name}</Typography>
+
+                                            <Typography>
+                                                {item?.name}
+                                                <IconButton onClick={() => { selectSpecification(item); setActiveSpecificationId(item.id) }}>
+                                                    <EditIcon />
+                                                </IconButton>
+                                            </Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             {Object.keys(item).map((key) => {
@@ -133,11 +141,12 @@ const Specefications = () => {
                                                 )
                                             })}
                                         </AccordionDetails>
+
                                     </Accordion>
                                 )
                             })
                         }
-                        <Button sx={{ width: '100%', marginTop: "20px", display: specification.length !== 0 ? "block" : 'none' }} variant="contained" type="submit" onClick={clearFields}>Add new specification</Button>
+                        <Button sx={{ width: '300px', marginTop: "20px", display: specification.length !== 0 ? "block" : 'none' }} variant="contained" type="submit" onClick={clearFields}>Add new specification</Button>
                     </div>
                 </Box>
                 <Box
@@ -145,11 +154,10 @@ const Specefications = () => {
                         display: 'block',
                         m: 1,
                         p: 1,
-                        border: '1px solid',
-                        borderRadius: 2,
                         fontSize: '0.875rem',
                         fontWeight: '700',
-                        width: "100%",
+                        width: "700px",
+                        margin: '0 auto',
                         overflowY: "auto"
 
                     }}
@@ -236,6 +244,7 @@ const Specefications = () => {
                             </TextField>
 
                             <FormControlLabel
+                                sx={{ marginBottom: '20px' }}
                                 {...register("air_suspension")}
                                 control={<Checkbox />} label="Air suspension" />
                             <TextField
@@ -297,7 +306,7 @@ const Specefications = () => {
                     <Button variant="contained" onClick={() => { setNewConfigOption([...newConfigOption, { name: name, type: type }]) }}>Save</Button>
                 </Box>
             </Modal>
-        </div>
+        </div >
     );
 }
 
