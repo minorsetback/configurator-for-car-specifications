@@ -1,15 +1,15 @@
 //React
 import { useDispatch, useSelector } from 'react-redux';
 import { specificationActions } from '../bus/specification/actions';
-
+import { StringMap } from '../utility/types'
 export const useSpecefication = () => {
     const dispatch = useDispatch();
 
-    const setSpecification = (data: any) => {
+    const setSpecification = (data: StringMap) => {
         dispatch(specificationActions.setSpecification(data))
     }
 
-    const editSpecification = (id: string, data: any) => {
+    const editSpecification = (id: string, data: StringMap) => {
         dispatch(specificationActions.editSpecification(id, data))
     }
 
