@@ -26,8 +26,6 @@ const style = {
     p: 4,
 };
 
-
-
 const SpecificationForm: FC<{ activeSpecificationId: string }> = ({ activeSpecificationId }) => {
     const [initialValues, setInitialValues] = useState({
         air_suspension: false,
@@ -239,10 +237,10 @@ const SpecificationForm: FC<{ activeSpecificationId: string }> = ({ activeSpecif
                                     <Controller
                                         name={item.name}
                                         control={control}
+                                        key={index + item.name}
                                         render={({ field: { onChange, value } }) => (
                                             <FormControlLabel
                                                 sx={{ marginBottom: '20px' }}
-                                                key={index + item.name}
                                                 {...register(item.name)}
                                                 onChange={onChange} checked={!!value}
                                                 control={<Checkbox />} label={item.name} />

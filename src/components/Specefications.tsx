@@ -4,9 +4,8 @@ import SpeceficationBlock from './SpecificationBlock';
 import SpecificationForm from './SpeceficationForm';
 
 const Specefications = () => {
-
     const [activeSpecificationId, setActiveSpecificationId] = useState<string>('')
-
+    
     return (
         <>
             <Box

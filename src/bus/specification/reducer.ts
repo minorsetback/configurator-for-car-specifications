@@ -2,11 +2,8 @@
 import { types } from './types';
 import { v4 as uuidv4 } from 'uuid';
 import { StringMap } from "../../utility/types"
-interface specification {
-    specification: Array<StringMap>
-}
 
-const initialState: specification = {
+const initialState = {
     specification: []
 }
 
